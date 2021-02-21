@@ -12,11 +12,31 @@
 
 ##Usage
 
+### General
 | Alias | Description |
 |:-:|:-:|
 | `s`  |  `sail` |
 | `sup`  |  `sail up` |
 | `sud`  |  `sail up -d` |
 | `sdown`  |  `sail down` |
+|`sb`|`sail build`|
+
+### artisan and Dependencies 
 | `sa`  |  `sail artisan` |
 |`sp`|`sail php`|
+|`sc`|`sail composer`|
+|`sn`|`sail npm`|
+
+### npm build commands
+|`swatch`|`sail npm run watch`|
+|`sdev`|`sail npm run dev`|
+|`sprod`|`sail npm run production`|
+
+### Testing
+|`st`|`sail test`|
+|`sdusk`|`sail dusk`|
+
+### Others
+|`ss`|`sail shell`|
+|`stinker`|`sail tinker`|
+|`sshare`|`sail share`|
