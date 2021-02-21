@@ -10,7 +10,7 @@
 4. add ```laravel-sail``` to your zsh config plugins 
 5. start a new terminal session and use the aliases
 
-##Usage
+## Usage
 
 ### General
 | Alias | Description |
