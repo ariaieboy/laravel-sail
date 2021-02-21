@@ -22,21 +22,29 @@
 |`sb`|`sail build`|
 
 ### artisan and Dependencies 
+| Alias | Description |
+|:-:|:-:|
 | `sa`  |  `sail artisan` |
 |`sp`|`sail php`|
 |`sc`|`sail composer`|
 |`sn`|`sail npm`|
 
 ### npm build commands
+| Alias | Description |
+|:-:|:-:|
 |`swatch`|`sail npm run watch`|
 |`sdev`|`sail npm run dev`|
 |`sprod`|`sail npm run production`|
 
 ### Testing
+| Alias | Description |
+|:-:|:-:|
 |`st`|`sail test`|
 |`sdusk`|`sail dusk`|
 
 ### Others
+| Alias | Description |
+|:-:|:-:|
 |`ss`|`sail shell`|
 |`stinker`|`sail tinker`|
 |`sshare`|`sail share`|
