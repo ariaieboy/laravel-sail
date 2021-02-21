@@ -1,11 +1,4 @@
-s() {
-  if [ -f "./vendor/bin/sail" ]; then
-        alias s="bash ./vendor/bin/sail"
-      else
-        echo "sail is not installed"
-  fi
-}
-# alias s='bash ./vendor/bin/sail'
+alias s='bash ./vendor/bin/sail'
 alias sup='s up'
 alias sud='s up -d'
 alias sdown='s down'
