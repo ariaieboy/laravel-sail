@@ -1,5 +1,5 @@
 s() {
-  if [ test -f "./vendor/bin/sail" ]; then
+  if [ -f "./vendor/bin/sail" ]; then
         bash ./vendor/bin/sail
       else
         echo "sail is not installed"
