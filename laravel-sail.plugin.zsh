@@ -1,6 +1,6 @@
 s() {
   if [ -f "./vendor/bin/sail" ]; then
-        bash ./vendor/bin/sail
+        alias s="bash ./vendor/bin/sail"
       else
         echo "sail is not installed"
   fi
