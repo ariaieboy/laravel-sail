@@ -40,6 +40,7 @@
 | Alias | Description |
 |:-:|:-:|
 |`st`|`sail test`|
+|`stp`|`sail test --parallel`|
 |`sdusk`|`sail dusk`|
 
 ### Others
