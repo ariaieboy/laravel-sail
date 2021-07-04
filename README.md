@@ -41,6 +41,8 @@
 |:-:|:-:|
 |`st`|`sail test`|
 |`stp`|`sail test --parallel`|
+|`stf`|`sail test --order-by=defects --stop-on-defect`|
+|`stpf`|`sail test --order-by=defects --stop-on-defect --parallel`|
 |`sdusk`|`sail dusk`|
 
 ### Others
