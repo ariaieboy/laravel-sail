@@ -6,6 +6,13 @@ function s() {
     -w /var/www/html \
     laravelsail/php${2:=81}-composer:latest \
     composer install --ignore-platform-reqs
+    elif [[ $1 == "ninit" ]]; then
+        docker run --rm \
+        -u "$(id -u):$(id -g)" \
+        -v $(pwd):/var/www/html \
+        -w /var/www/html \
+        node:${2:=17} \
+        npm install
     else
         bash ./vendor/bin/sail $*
     fi
