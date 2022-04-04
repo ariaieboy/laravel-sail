@@ -1,4 +1,16 @@
-alias s='bash ./vendor/bin/sail'
+function s() {
+    if [[ $1 == "cinit" ]]; then
+        docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php${2:=81}-composer:latest \
+    composer install --ignore-platform-reqs
+    else
+        bash ./vendor/bin/sail $*
+    fi
+}
+# alias s='bash ./vendor/bin/sail'
 alias sup='s up'
 alias sud='s up -d'
 alias sdown='s down'
