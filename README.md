@@ -6,7 +6,7 @@
  git clone https://github.com/ariaieboy/laravel-sail ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/laravel-sail
 ```
 
-3. now edit zsh config file located in ```~./zshrc```
+3. now edit zsh config file located in ```~/.zshrc```
 4. add ```laravel-sail``` to your zsh config plugins 
 5. start a new terminal session and use the aliases
 
