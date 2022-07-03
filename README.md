@@ -39,7 +39,9 @@
 |:-:|:-:|
 |`swatch`|`sail npm run watch`|
 |`sdev`|`sail npm run dev`|
+|`sbuild`|`sail npm run build`|
 |`sprod`|`sail npm run production`|
+
 
 ### Testing
 | Alias | Description |
