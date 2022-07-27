@@ -29,6 +29,7 @@
 |`sbn`|`sail build --no-cache`|
 
 ### General Artisan Commands
+| Alias | Description |
 |:-:|:-:|
 | `saqw`  |  `sail artisan queue:work` |
 | `saql`  |  `sail artisan queue:listen` |
