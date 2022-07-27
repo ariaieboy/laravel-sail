@@ -55,5 +55,6 @@
 | Alias | Description |
 |:-:|:-:|
 |`ss`|`sail shell`|
+|`sroot`|`sail root-shell`|
 |`stinker`|`sail tinker`|
 |`sshare`|`sail share`|
