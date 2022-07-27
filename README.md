@@ -17,6 +17,7 @@
 |:-:|:-:|
 | `s cinit 80` | run `composer install --ignore-platform-reqs` using php version 8.0 - default php version is 8.1 |
 | `s ninit 16` | run `npm install` using node 16 - default node version is 17 |
+
 ### General
 | Alias | Description |
 |:-:|:-:|
@@ -25,6 +26,14 @@
 | `sud`  |  `sail up -d` |
 | `sdown`  |  `sail down` |
 |`sb`|`sail build`|
+|`sbn`|`sail build --no-cache`|
+
+### General Artisan Commands
+|:-:|:-:|
+| `saqw`  |  `sail artisan queue:work` |
+| `saql`  |  `sail artisan queue:listen` |
+| `sasw`  |  `sail artisan schedule:work` |
+| `sasr`  |  `sail artisan schedule:run` |
 
 ### artisan and Dependencies 
 | Alias | Description |
@@ -33,6 +42,7 @@
 |`sp`|`sail php`|
 |`sc`|`sail composer`|
 |`sn`|`sail npm`|
+|`sy`|`sail yarn`|
 
 ### npm build commands
 | Alias | Description |
