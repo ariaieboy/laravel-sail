@@ -61,6 +61,7 @@
 |`stp`|`sail test --parallel`|
 |`sdusk`|`sail dusk`|
 |`stan`|`./vendor/bin/phpstan`|
+|`spint`|`./vendor/bin/pint`|
 
 ### Others
 | Alias | Description |
