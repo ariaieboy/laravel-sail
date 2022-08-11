@@ -1,4 +1,11 @@
 # laravel-sail
+![Ariaieboy Laravel-Sail](https://preview.dragon-code.pro/Ariaieboy/Laravel-Sail.svg)
+This plugin adds some useful aliases for sail commands to the zsh shell.
+
+* It will auto-discover sail executable and you can run its aliases from any Project Directory.
+* It provides auto-completion for `artisan` and `composer` commands when you use sail.
+* It also have `s cinit` alias for installing composer Dependencies and `s ninit` for installing npm Dependencies on your project, when sail is not installed.
+
 ## Installation
 1. you must install oh my zsh + git to use this plugin
 2. after installing git and Oh My Zsh run command below
