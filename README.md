@@ -43,6 +43,7 @@
 |`sp`|`sail php`|
 |`sc`|`sail composer`|
 |`sn`|`sail npm`|
+|`spn`|`sail pnpm`|
 |`sy`|`sail yarn`|
 
 ### npm build commands
