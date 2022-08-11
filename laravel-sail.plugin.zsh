@@ -1,3 +1,4 @@
+export APP_SERVICE=${APP_SERVICE:-"laravel.test"}
 function s() {
     if [[ $1 == "cinit" ]]; then
         docker run --rm \
@@ -14,7 +15,7 @@ function s() {
         node:${2:=17} \
         npm install
     else
-        bash ./vendor/bin/sail $*
+        [ -f sail ] && sh sail $* || sh vendor/bin/sail $*
     fi
 }
 # alias s='bash ./vendor/bin/sail'
@@ -29,7 +30,7 @@ alias sasr='s artisan schedule:run'
 alias sp='s php'
 alias sc='s composer'
 alias sn='s npm'
-alias spn='s pnpm'
+alias spn='s exec -u sail $APP_SERVICE pnpm'
 alias sy='s yarn'
 alias swatch='s npm run watch'
 alias sprod='s npm run production'
