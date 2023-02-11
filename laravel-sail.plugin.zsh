@@ -7,14 +7,14 @@ function s() {
       -u "$(id -u):$(id -g)" \
       -v $(pwd):/var/www/html \
       -w /var/www/html \
-      laravelsail/php${2:=81}-composer:latest \
+      laravelsail/php${2:=82}-composer:latest \
       composer install --ignore-platform-reqs
   elif [[ $1 == "ninit" ]]; then
     docker run --rm \
       -u "$(id -u):$(id -g)" \
       -v $(pwd):/var/www/html \
       -w /var/www/html \
-      node:${2:=17} \
+      node:${2:=18} \
       npm install
   else
     if [ "$sail_path" = "" ]; then
