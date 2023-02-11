@@ -22,8 +22,8 @@ This plugin adds some useful aliases for sail commands to the zsh shell.
 ### Pre Sail Installation Commands
 | Alias | Description |
 |:-:|:-:|
-| `s cinit 80` | run `composer install --ignore-platform-reqs` using php version 8.0 - default php version is 8.1 |
-| `s ninit 16` | run `npm install` using node 16 - default node version is 17 |
+| `s cinit 80` | run `composer install --ignore-platform-reqs` using php version 8.0 - default php version is 8.2 |
+| `s ninit 16` | run `npm install` using node 16 - default node version is 18 |
 
 ### General
 | Alias | Description |
