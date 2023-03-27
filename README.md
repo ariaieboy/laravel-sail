@@ -70,6 +70,7 @@ This plugin adds some useful aliases for sail commands to the zsh shell.
 |`sdusk`|`sail dusk`|
 |`stan`|`./vendor/bin/phpstan`|
 |`spint`|`./vendor/bin/pint`|
+|`spest`|`./vendor/bin/pest`|
 
 ### Others
 | Alias | Description |
