@@ -57,6 +57,7 @@ alias sbn='s build --no-cache'
 alias sshare='s share'
 alias stan='sp ./vendor/bin/phpstan'
 alias spint='sp ./vendor/bin/pint'
+alias spint='sp ./vendor/bin/pest'
 compdef _artisan sa
 compdef _composer sc
 function _artisan() {
