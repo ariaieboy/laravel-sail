@@ -51,6 +51,8 @@ This plugin adds some useful aliases for sail commands to the zsh shell.
 |`sc`|`sail composer`|
 |`sn`|`sail npm`|
 |`spn`|`sail pnpm`|
+|`sbun`|`sail bun`|
+|`sbunx`|`sail bunx`|
 |`sy`|`sail yarn`|
 
 ### npm build commands
