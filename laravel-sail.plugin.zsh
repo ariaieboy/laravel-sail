@@ -22,7 +22,7 @@ function s() {
       -u "$(id -u):$(id -g)" \
       -v $(pwd):/var/www/html \
       -w /var/www/html \
-      laravelsail/php"${2:=82}"-composer:latest \
+      laravelsail/php"${2:=83}"-composer:latest \
       composer install --ignore-platform-reqs
   elif [[ $1 == "ninit" ]]; then
     docker run --rm \
