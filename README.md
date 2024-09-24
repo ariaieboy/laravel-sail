@@ -16,7 +16,7 @@ This plugin adds some useful aliases for sail commands to the zsh shell.
 3. now edit zsh config file located in ```~/.zshrc```
 4. add ```laravel-sail``` to your zsh config plugins 
 5. start a new terminal session and use the aliases
-6. add `ZSH_SAIL_FALLBACK_TO_LOCAL=true` into your ```~/.zshrc``` if you want to use the local installed tools on projects that won't have sail installed.
+6. (OPTIONAL) add `ZSH_SAIL_FALLBACK_TO_LOCAL=true` into your ```~/.zshrc``` if you want to use the local installed tools on projects that won't have sail installed.
 ## Usage
 
 ### Pre Sail Installation Commands
