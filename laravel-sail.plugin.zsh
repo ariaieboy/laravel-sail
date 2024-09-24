@@ -33,8 +33,12 @@ function s() {
       npm install
   else
     if [ "$sail_path" = "" ]; then
+      if [ $ZSH_SAIL_FALLBACK_TO_LOCAL = "true" ]; then
+        $*
+        else
         >&2 printf "laravel-sail: sail executable not found. Are you in a Laravel directory?\nif yes try install Dependencies using 's cinit' command\n"
         return 1
+      fi
     fi
     $sail_path $*
   fi
