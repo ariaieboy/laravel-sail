@@ -79,8 +79,14 @@ alias sshare='s share'
 alias stan='sp ./vendor/bin/phpstan'
 alias spint='sp ./vendor/bin/pint'
 alias spest='sp ./vendor/bin/pest'
-compdef _artisan sa
-compdef _composer sc
+
+function _sail() {
+  if [ -f "./vendor/bin/sail" ]; then
+    local -a commands
+    commands=("${(@f)$(s --help 2>/dev/null | grep -Eo '^  sail [a-z0-9:-]+' | awk '{ print $2 }' | sort -u)}")
+    compadd -a commands
+  fi
+}
 function _artisan() {
   if [ -f "./vendor/bin/sail" ]; then
     compadd $(sa --raw --no-ansi list | sed "s/[[:space:]].*//g")
@@ -91,3 +97,8 @@ function _composer() {
     compadd $(sc --raw --no-ansi list | sed "s/[[:space:]].*//g")
   fi
 }
+
+compdef _artisan sa
+compdef _sail s
+compdef _sail sail
+compdef _composer sc
