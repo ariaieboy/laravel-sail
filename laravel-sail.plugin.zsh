@@ -101,7 +101,8 @@ function _composer() {
   fi
 }
 
-compdef _artisan sa
 compdef _sail s
 compdef _sail sail
+
+compdef _artisan sa
 compdef _composer sc
