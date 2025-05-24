@@ -90,12 +90,12 @@ function _sail() {
     compadd -a commands
   fi
 }
-function _artisan() {
+function _artisan_sail() {
   if [ -f "./vendor/bin/sail" ]; then
     compadd $(sa --raw --no-ansi list | sed "s/[[:space:]].*//g")
   fi
 }
-function _composer() {
+function _composer_sail() {
   if [ -f "./vendor/bin/sail" ]; then
     compadd $(sc --raw --no-ansi list | sed "s/[[:space:]].*//g")
   fi
@@ -104,5 +104,5 @@ function _composer() {
 compdef _sail s
 compdef _sail sail
 
-compdef _artisan sa
-compdef _composer sc
+compdef _artisan_sail sa
+compdef _composer_sail sc
