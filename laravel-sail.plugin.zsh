@@ -43,6 +43,9 @@ function s() {
     $sail_path $*
   fi
 }
+function sail() {
+  s $*
+}
 function sa() {
   s artisan $*
 }
