@@ -1,4 +1,5 @@
 export APP_SERVICE=${APP_SERVICE:-"laravel.test"}
+
 function _find_sail() {
   local dir=.
   until [ $dir -ef / ]; do
@@ -13,10 +14,10 @@ function _find_sail() {
   done
   return 1
 }
+
 function s() {
   local sail_path
   sail_path=$(_find_sail)
-
   if [[ $1 == "cinit" ]]; then
     docker run --rm \
       -u "$(id -u):$(id -g)" \
@@ -35,7 +36,7 @@ function s() {
     if [ "$sail_path" = "" ]; then
       if [ $ZSH_SAIL_FALLBACK_TO_LOCAL = "true" ]; then
         $*
-        else
+      else
         >&2 printf "laravel-sail: sail executable not found. Are you in a Laravel directory?\nif yes try install Dependencies using 's cinit' command\n"
         return 1
       fi
@@ -43,16 +44,20 @@ function s() {
     $sail_path $*
   fi
 }
+
 function sail() {
   s $*
 }
+
 function sa() {
   s artisan $*
 }
+
 function sc() {
   s composer $*
 }
-# alias s='bash ./vendor/bin/sail'
+
+# Aliases
 alias sup='s up'
 alias sud='s up -d'
 alias sdown='s down'
@@ -83,26 +88,101 @@ alias stan='sp ./vendor/bin/phpstan'
 alias spint='sp ./vendor/bin/pint'
 alias spest='sp ./vendor/bin/pest'
 
+# Main completion function for s/sail
 function _sail() {
-  if [ -f "./vendor/bin/sail" ]; then
-    local -a commands
-    commands=("${(@f)$(s --help 2>/dev/null | grep -Eo '^  sail [a-z0-9:-]+' | awk '{ print $2 }' | sort -u)}")
-    compadd -a commands
-  fi
-}
-function _artisan_sail() {
-  if [ -f "./vendor/bin/sail" ]; then
-    compadd $(sa --raw --no-ansi list | sed "s/[[:space:]].*//g")
-  fi
-}
-function _composer_sail() {
-  if [ -f "./vendor/bin/sail" ]; then
-    compadd $(sc --raw --no-ansi list | sed "s/[[:space:]].*//g")
+  local -a commands
+  if [[ CURRENT -eq 2 ]]; then
+    # First argument: list top-level sail commands
+    if [ -f "./vendor/bin/sail" ]; then
+      # Get sail commands dynamically - try different approaches
+      commands=("${(@f)$(s 2>&1 | grep -E 'sail' | awk '{print $2}' | sort -u)}")
+      if [[ ${#commands[@]} -eq 0 ]]; then
+        # Fallback: try without arguments to get help
+        commands=("${(@f)$(s help 2>/dev/null | grep -E '^    [a-z]' | awk '{print $1}' | sort -u)}")
+      fi
+      if [[ ${#commands[@]} -eq 0 ]]; then
+        # Another fallback: parse from sail script itself
+        commands=("${(@f)$(grep -E '^[[:space:]]*"[a-z-]+"' ./vendor/bin/sail 2>/dev/null | sed 's/.*"\([^"]*\)".*/\1/' | sort -u)}")
+      fi
+      compadd -a commands
+    fi
+  elif [[ CURRENT -eq 3 ]]; then
+    # Second argument, depending on first
+    case ${words[2]} in
+      artisan)
+        if [ -f "./vendor/bin/sail" ]; then
+          commands=("${(@f)$(sa list 2>/dev/null | grep -E '^  [a-z]' | awk '{print $1}' | sort -u)}")
+          compadd -a commands
+        fi
+        ;;
+      composer)
+        if [ -f "./vendor/bin/sail" ]; then
+          commands=("${(@f)$(sc list 2>/dev/null | grep -E '^  [a-z]' | awk '{print $1}' | sort -u)}")
+          compadd -a commands
+        fi
+        ;;
+    esac
+  elif [[ CURRENT -gt 3 ]]; then
+    # Third layer: options for specific commands
+    case ${words[2]} in
+      artisan)
+        if [[ ${words[3]} != "" ]] && [ -f "./vendor/bin/sail" ]; then
+          local options=("${(@f)$(sa ${words[2]} --help 2>/dev/null | grep -E '^[[:space:]]*--[a-zA-Z]' | sed 's/[[:space:]]*\(--[a-zA-Z-]*\).*/\1/' | sort -u)}")
+          if [[ ${#options[@]} -gt 0 ]]; then
+            compadd -a options
+          fi
+        fi
+        ;;
+      composer)
+        if [[ ${words[3]} != "" ]] && [ -f "./vendor/bin/sail" ]; then
+          local options=("${(@f)$(sc ${words[3]} --help 2>/dev/null | grep -E '^[[:space:]]*--[a-zA-Z]' | sed 's/[[:space:]]*\(--[a-zA-Z-]*\).*/\1/' | sort -u)}")
+          if [[ ${#options[@]} -gt 0 ]]; then
+            compadd -a options
+          fi
+        fi
+        ;;
+    esac
   fi
 }
 
+# Completion function for sa (sail artisan)
+function _sa() {
+  local -a commands
+  if [[ CURRENT -eq 2 ]]; then
+    if [ -f "./vendor/bin/sail" ]; then
+      commands=("${(@f)$(sa list 2>/dev/null | grep -E '^  [a-z]' | awk '{print $1}' | sort -u)}")
+      compadd -a commands
+    fi
+  elif [[ CURRENT -gt 2 ]]; then
+    if [[ ${words[2]} != "" ]] && [ -f "./vendor/bin/sail" ]; then
+      local options=("${(@f)$(sa ${words[2]} --help 2>/dev/null | grep -E '^[[:space:]]*--[a-zA-Z]' | sed 's/[[:space:]]*\(--[a-zA-Z-]*\).*/\1/' | sort -u)}")
+      if [[ ${#options[@]} -gt 0 ]]; then
+        compadd -a options
+      fi
+    fi
+  fi
+}
+
+# Completion function for sc (sail composer)
+function _sc() {
+  local -a commands
+  if [[ CURRENT -eq 2 ]]; then
+    if [ -f "./vendor/bin/sail" ]; then
+      commands=("${(@f)$(sc list 2>/dev/null | grep -E '^  [a-z]' | awk '{print $1}' | sort -u)}")
+      compadd -a commands
+    fi
+  elif [[ CURRENT -gt 2 ]]; then
+    if [[ ${words[2]} != "" ]] && [ -f "./vendor/bin/sail" ]; then
+      local options=("${(@f)$(sc ${words[2]} --help 2>/dev/null | grep -E '^[[:space:]]*--[a-zA-Z]' | sed 's/[[:space:]]*\(--[a-zA-Z-]*\).*/\1/' | sort -u)}")
+      if [[ ${#options[@]} -gt 0 ]]; then
+        compadd -a options
+      fi
+    fi
+  fi
+}
+
+# Register completions
 compdef _sail s
 compdef _sail sail
-
-compdef _artisan_sail sa
-compdef _composer_sail sc
+compdef _sa sa
+compdef _sc sc
