@@ -87,7 +87,7 @@ alias sshare='s share'
 alias stan='sp ./vendor/bin/phpstan'
 alias spint='sp ./vendor/bin/pint'
 alias spest='sp ./vendor/bin/pest'
-
+alias srector='sp ./vendor/bin/rector'
 # Main completion function for s/sail
 function _sail() {
   local -a commands
