@@ -81,3 +81,4 @@ This plugin adds some useful aliases for sail commands to the zsh shell.
 |`sroot`|`sail root-shell`|
 |`stinker`|`sail tinker`|
 |`sshare`|`sail share`|
+|`srector`|`./vendor/bin/rector`|
