@@ -30,7 +30,7 @@ function s() {
       -u "$(id -u):$(id -g)" \
       -v $(pwd):/var/www/html \
       -w /var/www/html \
-      node:${2:=24} \
+      node:${2:=26} \
       npm install
   else
     if [ "$sail_path" = "" ]; then
